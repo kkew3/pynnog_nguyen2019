@@ -53,7 +53,7 @@ It's recommended to run this in a virtual environment.
 
 ## Usage
 
-To solve $\min \|y-Hx\|_2^2$ for $x$ with constraints $x \ge 0$ (elementwise) and $\|x\|_0 \le K$ given $H^\top H$ and $H^\top y$, assuming $H$ has been normalized columnwise:
+To solve $\min \\|y-Hx\\|_2^2$ for $x$ with constraints $x \ge 0$ (elementwise) and $\\|x\\|_0 \le K$ given $H^\top H$ and $H^\top y$, assuming $H$ has been normalized columnwise:
 
 ```python
 import numpy as np
@@ -71,7 +71,8 @@ Hy = np.dot(H.T, y)
 K = 5
 
 # Solve the problem.
-# You may want to convert the result `x` into scipy sparse matrix afterward.
+# You may want to convert the result `x` into scipy sparse matrix
+# afterward.
 x = gram_nnomp(Hy, HH, K)
 ```
 
