@@ -3,7 +3,7 @@ import typing as ty
 import numpy as np
 from scipy.optimize import nnls
 
-from nnog import nnomb_nb as m
+from nnog import nnomp_nb as m
 
 
 def test_delete_row():
