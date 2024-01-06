@@ -143,7 +143,7 @@ def as_nnls(Hy, HH, l, V, x, theta):
     while max_prod > 0:
         xV, V, theta = re_uls_1(Hy, HH, V, l_plus, xV, theta)
         b = xV < 0
-        while np.any(b):
+        while np.any(b[V]):
             # Somehow `tmp` always becomes float64 regardless of the type of
             # x and xV, so I have to manually cast its type.
             tmp = np.where(b[V], x[V] / (x[V] - xV[V]), np.inf).astype(x.dtype)

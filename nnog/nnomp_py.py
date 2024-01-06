@@ -67,7 +67,7 @@ def as_nnls(Hy, HH, l, V, x, theta):
     while max_prod > 0:
         xV, V, theta = re_uls_1(Hy, HH, V, l_plus, xV, theta)
         b = xV < 0
-        while np.any(b):
+        while np.any(b[V]):
             alpha, l_minus, j = min_argmin(
                 np.where(b[V], x[V] / (x[V] - xV[V]), np.inf), V)
             x += alpha * (xV - x)
