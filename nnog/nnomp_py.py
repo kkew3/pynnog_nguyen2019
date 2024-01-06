@@ -20,7 +20,7 @@ def gram_nnomp(Hy, HH, K):
     """
     The NNOMP algorithm on a precomputed Gram matrix. I didn't reimplement the
     estimation of the residual term (a.k.a. the squared error), because I
-    didn't fully understant the formula. The accuracy of the solution, though,
+    didn't fully understand the formula. The accuracy of the solution, though,
     is guaranteed by tests.
 
     :param Hy: H'*y of shape (n,)
