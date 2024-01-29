@@ -1,5 +1,6 @@
 -r requirements.txt
 
-scipy
+# Used by tests.
 pytest
+# Used by profiling.
 joblib

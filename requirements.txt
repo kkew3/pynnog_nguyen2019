@@ -1,3 +1,5 @@
 numpy
 # So that np.append and np.delete are supported.
 numba>=0.46.0
+# Although not used explicitly, this is required by numba.
+scipy
