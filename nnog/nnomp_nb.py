@@ -6,9 +6,6 @@ Numba reimplementation of "Non-Negative Orthogonal Greedy Algorithms"
 import numba as nb
 import numpy as np
 
-# Note that to compile, you may need the latest version of numba, in order that
-# numba supports np.append and np.delete.
-
 
 @nb.jit(nopython=True, nogil=True)
 def delete_row(A, j):

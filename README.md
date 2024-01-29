@@ -24,7 +24,7 @@ pip install -r requirements.txt
 or with conda:
 
 ```bash
-conda install numpy numba
+conda install numpy "numba>=0.46.0"
 ```
 
 To run tests (with [pytest](https://docs.pytest.org/en/7.4.x/)) and the profiling code (`profile.py`), you'll need `requirements-dev.txt`:
@@ -36,7 +36,7 @@ pip install -r requirements-dev.txt
 or with conda:
 
 ```bash
-conda install numpy numba scipy pytest joblib
+conda install numpy "numba>=0.46.0" scipy pytest joblib
 ```
 
 ## Installation
