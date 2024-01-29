@@ -135,6 +135,34 @@ def test_re_uls_1():
     assert np.allclose(upd_theta, upd_theta_true)
     assert np.isclose(upd_err2, upd_err2_true)
 
+    V = np.array([], dtype=int)
+    np.random.seed(124)
+    V_addl = np.append(V, l)
+    (
+        H,
+        y,
+        _,
+        Hy,
+        HH,
+        _,
+        _,
+        _,
+        _,
+        _,
+    ) = prepare_data(10, n_features, 4, 0.1, V, l)
+    last_x = solve_S_support_lstsq(H, y, V)
+    last_err2 = np.linalg.norm(y - np.dot(H, last_x))**2
+    assert np.isclose(last_err2, np.dot(y, y))
+    last_theta = np.linalg.inv(np.matmul(H[:, V].T, H[:, V]))
+    upd_theta_true = np.linalg.inv(np.matmul(H[:, V_addl].T, H[:, V_addl]))
+    x_pred, _, upd_theta, upd_err2 = m.re_uls_1(Hy, HH, V, l, last_x,
+                                                last_theta, last_err2)
+    x_true = solve_S_support_lstsq(H, y, V_addl)
+    upd_err2_true = np.linalg.norm(y - np.dot(H, x_true))**2
+    assert np.allclose(x_pred, x_true)
+    assert np.allclose(upd_theta, upd_theta_true)
+    assert np.isclose(upd_err2, upd_err2_true)
+
 
 def test_re_uls_0():
     n_features = 7
