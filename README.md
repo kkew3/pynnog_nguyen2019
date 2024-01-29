@@ -88,15 +88,15 @@ Running `profile.py`, you'll get output like this (won't be exactly the same):
 
 ```
 ---
-(n_features=100) python took 0.001573 sec on average
-(n_features=100)  numba took 0.000095 sec on average
-(n_features=100) python (parallel) took 0.553898 sec in total
-(n_features=100)  numba (parallel) took 0.037113 sec in total
+(n_features=100) python took 0.000566 sec on average
+(n_features=100)  numba took 0.000037 sec on average
+(n_features=100) python (parallel) took 0.237993 sec in total
+(n_features=100)  numba (parallel) took 0.006264 sec in total
 ---
-(n_features=2000) python took 0.562712 sec on average
-(n_features=2000)  numba took 0.496468 sec on average
-(n_features=2000) python (parallel) took 44.130961 sec in total
-(n_features=2000)  numba (parallel) took 37.828639 sec in total
+(n_features=2000) python took 0.125658 sec on average
+(n_features=2000)  numba took 0.093206 sec on average
+(n_features=2000) python (parallel) took 8.752653 sec in total
+(n_features=2000)  numba (parallel) took 6.783788 sec in total
 ```
 
 Note that the above result does not take into account the compiling overhead of `numba`.
