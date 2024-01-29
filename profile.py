@@ -17,23 +17,24 @@ def profile(n_samples, n_features, K):
 
     Hy = np.matmul(H.T, y)
     HH = np.matmul(H.T, H)
+    yy = np.dot(y, y)
 
     # warm-up
-    _ = gram_nnomp(Hy, HH, K)
+    _ = gram_nnomp(Hy, HH, yy, K)
 
     n_runs = 100
 
     print('---')
     tic = time.perf_counter()
     for _ in range(n_runs):
-        _ = gram_nnomp_py(Hy, HH, K)
+        _ = gram_nnomp_py(Hy, HH, yy, K)
     toc = time.perf_counter()
     print(f'(n_features={n_features}) '
           f'python took {(toc - tic) / n_runs:.6f} sec on average')
 
     tic = time.perf_counter()
     for _ in range(n_runs):
-        _ = gram_nnomp(Hy, HH, K)
+        _ = gram_nnomp(Hy, HH, yy, K)
     toc = time.perf_counter()
     print(f'(n_features={n_features})  '
           f'numba took {(toc - tic) / n_runs:.6f} sec on average')
@@ -41,7 +42,7 @@ def profile(n_samples, n_features, K):
     tic = time.perf_counter()
     _ = Parallel(
         n_jobs=2, backend='loky')(
-            delayed(gram_nnomp_py)(Hy, HH, K) for _ in range(n_runs))
+            delayed(gram_nnomp_py)(Hy, HH, yy, K) for _ in range(n_runs))
     toc = time.perf_counter()
     print(f'(n_features={n_features}) '
           f'python (parallel) took {toc - tic:.6f} sec in total')
@@ -49,7 +50,7 @@ def profile(n_samples, n_features, K):
     tic = time.perf_counter()
     _ = Parallel(
         n_jobs=2, backend='threading')(
-            delayed(gram_nnomp)(Hy, HH, K) for _ in range(n_runs))
+            delayed(gram_nnomp)(Hy, HH, yy, K) for _ in range(n_runs))
     toc = time.perf_counter()
     print(f'(n_features={n_features})  '
           f'numba (parallel) took {toc - tic:.6f} sec in total')
