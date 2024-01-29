@@ -18,10 +18,12 @@ def min_argmin(values, indices):
 
 def gram_nnomp(Hy, HH, yy, K, tol=0.0):
     """
-    The NNOMP algorithm on a precomputed Gram matrix. I didn't reimplement the
-    estimation of the residual term (a.k.a. the squared error), because I
-    didn't fully understand the formula. The accuracy of the solution, though,
-    is guaranteed by tests.
+    The NNOMP algorithm on a precomputed Gram matrix.
+
+    Note that, although this function takes Gram matrix as input, really, it
+    is not a batch algorithm like "Efficient Implementation of the K-SVD
+    Algorithm using Batch Orthogonal Matching Pursuit"
+    (Rubinstein et al., 2008) in any sense.
 
     :param Hy: H'*y of shape (n,)
     :param HH: H'*H of shape (n, n)

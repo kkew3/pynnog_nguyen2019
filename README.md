@@ -11,7 +11,6 @@ Note that this is not a verbatim translation from the authors' Matlab code.
 ## About the gram-NNOMP solver
 
 NNOMP is the acryonym of "non-negative orthogonal matching pursuit".
-The solver reimplemented in this package takes only the Gram matrix, thus able to handle large-scale problem.
 For orthogonal matching pursuit *without* non-negativity constraint, see, e.g., [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.orthogonal_mp_gram.html).
 
 ## Prerequisite
